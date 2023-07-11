@@ -164,10 +164,10 @@ class notpath(QDialog):
         if x == 1:
             title.setText("Вы не выбрали коренную папку")
             self.windowTitle("Нету папки")
-        if x == 2:
+        elif x == 2:
             title.setText("Вы не выбрали DSC папку")
             self.setWindowTitle("Нету DSC")
-        if x == 3:
+        elif x == 3:
             self.setWindowTitle("Нету всего")
             title.setText("Вы не выбрали вообще все!")
         title.setFont(QFont('Serif', 15, QFont.Light))
