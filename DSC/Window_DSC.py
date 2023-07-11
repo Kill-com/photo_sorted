@@ -124,11 +124,10 @@ class win_DSC(QDialog):
     def confrim_def(self):
         window = None
         name = None
-        y = None
         if self.path_start_directory and self.path_DSC_directory is not None:
             name = self.you_name.toPlainText()
-            if y is not None:
-                a = DSC_handler_def(path_start_directory=self.path_start_directory,
+            if name is not None:
+                a, directory = DSC_handler_def(path_start_directory=self.path_start_directory,
                 path_DSC_directory=self.path_DSC_directory, you_directory= name)
             else:
                 a, directory= DSC_handler_def(path_start_directory=self.path_start_directory,
@@ -210,7 +209,7 @@ class end_window(QDialog):
         self.setGeometry(300,250,10,10)
         title = QLabel()
         title.setText(f"Все готово, файлы были переданны в дерикторию:\n{directory}")
-        self.setWindowTitle("Мы закнчили")
+        self.setWindowTitle("Мы закончили!")
         title.setFont(QFont('Serif', 15, QFont.Light))
         close_button = QPushButton()
         close_button.setText("Хорошо...")

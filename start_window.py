@@ -11,6 +11,7 @@ from html import *
 from DSC import win_DSC
 from Text import window_text
 from cancel import clear, verev_dir
+from format_PH import Win
 
 class Window(QDialog):
     
@@ -29,6 +30,7 @@ class Window(QDialog):
         self.main_text.setFixedSize(400, 50)
         font = QFont('Serif', 15, QFont.Light)
         self.main_text.setFont(font)
+        self.main_text.setAlignment(Qt.AlignCenter)
 
         self.ph_time = QPushButton(self)
         self.ph_time.setText("Программа разделения по времени")
@@ -42,10 +44,15 @@ class Window(QDialog):
         self.ph_text.setText("Программа разделения по выбранным цыфрам")
         self.ph_text.clicked.connect(self.text_prom)
 
+        self.form_photo_button = QPushButton(self)
+        self.form_photo_button.setText("Пограмма меняющая размер фото")
+        self.form_photo_button.clicked.connect(self.form_photo)
+
         layout.addWidget(self.main_text)
         layout.addWidget(self.ph_time)
         layout.addWidget(self.ph_DSC)
         layout.addWidget(self.ph_text)
+        layout.addWidget(self.form_photo_button)
 
         self.startW.setLayout(layout)
 
@@ -58,7 +65,7 @@ class Window(QDialog):
         
         self.show()
 
-        self.item = [self.main_text, self.ph_time, self.ph_DSC, self.ph_text]
+        self.item = [self.main_text, self.ph_time, self.ph_DSC, self.ph_text, self.form_photo_button]
 
     def win_time(self):
         
@@ -181,6 +188,16 @@ Arial, sans-serif;">Что делает эта программа:</p>
         layouton = self.layout()
         delete(layouton)
         win_DSC(mainW=self)
+    
+    def form_photo(self):
+        for item in self.item:
+            item.deleteLater()
+            del(item)
+
+        layouton = self.layout()
+        delete(layouton)
+        Win(MainW=self)
+
 
 class notsee(QDialog):
     def __init__(self):
